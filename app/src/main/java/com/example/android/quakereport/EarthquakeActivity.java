@@ -180,13 +180,6 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
 
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        //().destroyLoader(EARTHQUAKE_LOADER_ID);
-
-        Log.e(LOG_TAG, "Earthquake Activity stopped");
-    }
 
 
 }
