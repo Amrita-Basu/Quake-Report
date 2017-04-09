@@ -72,7 +72,6 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
             getLoaderManager().initLoader(EARTHQUAKE_LOADER_ID, null, this);
         }
 
-
     }
 
 
