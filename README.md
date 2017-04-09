@@ -1,4 +1,4 @@
-Quake Report App
+Quake Report
 ===================================
 An app for viewing recent global earthquake data using an API from the U.S. Geological Survey (USGS). The app also allows the user to modify the data query and edit their viewing preferences on a Settings screen. Built as part of an Android course taught by Google on Udacity.
 
