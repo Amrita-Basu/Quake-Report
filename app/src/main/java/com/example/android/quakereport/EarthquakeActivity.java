@@ -42,25 +42,20 @@ import android.content.AsyncTaskLoader;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import static android.content.Context.CONNECTIVITY_SERVICE;
+
 public class EarthquakeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Earthquake>> {
 
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
     private static final String USGS_REQUEST_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query";
-    private static final int EARTHQUAKE_LOADER_ID = 1;
+    public static final int EARTHQUAKE_LOADER_ID = 1;
     private static EarthquakeAdapter mAdapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // check if there is internet connectivity, if there isn't hide the loading indicator and set the text of the empty text view to an appropriate message
+        Log.e(LOG_TAG, "onCreate()");
         setContentView(R.layout.earthquake_activity);
         ConnectivityManager cm = (ConnectivityManager) this.getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
@@ -76,6 +71,13 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
             Log.e(LOG_TAG, "Loader being initialized by the Loader Manager");
             getLoaderManager().initLoader(EARTHQUAKE_LOADER_ID, null, this);
         }
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
 
     }
@@ -181,7 +183,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
     @Override
     protected void onStop() {
         super.onStop();
-        getLoaderManager().destroyLoader(EARTHQUAKE_LOADER_ID);
+        //().destroyLoader(EARTHQUAKE_LOADER_ID);
 
         Log.e(LOG_TAG, "Earthquake Activity stopped");
     }
