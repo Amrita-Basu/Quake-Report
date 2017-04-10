@@ -56,6 +56,14 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e(LOG_TAG, "onCreate()");
+
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         setContentView(R.layout.earthquake_activity);
         ConnectivityManager cm = (ConnectivityManager) this.getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
@@ -71,9 +79,13 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
             Log.e(LOG_TAG, "Loader being initialized by the Loader Manager");
             getLoaderManager().initLoader(EARTHQUAKE_LOADER_ID, null, this);
         }
-
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        getLoaderManager().destroyLoader(EARTHQUAKE_LOADER_ID);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
